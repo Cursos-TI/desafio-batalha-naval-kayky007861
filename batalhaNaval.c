@@ -1,47 +1,53 @@
 #include <stdio.h>
 
-#define linha 10   //Constante usada para definir as linhas 
-#define coluna 10  //Constante usada para definir  as colunas 
+#define linha 10
+#define coluna 10
 
 int main()  {
-    // Desenvolvendo o Jogo Batalha Naval
 
-    //Martriz do Tabuleiro
-    int Matriz[linha][coluna]=
+    //Declaração do Tabuleiro 
+
+    int Tabuleiro[linha][coluna] = 
     {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 0 
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 1
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 2
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 3 
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 4
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 5
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 6
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 7
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 8
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},//linha 9
+    {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+    {0, 1, 0, 0, 0, 1, 0, 0, 1, 0},
+    {0, 0, 1, 0, 0, 1, 0, 1, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 2, 0},
+    {1, 1, 1, 0, 0, 0, 0, 2, 2, 2},
+    {0, 0, 2, 0, 0, 0, 0, 0, 2, 0},
+    {0, 2, 2, 2, 0, 0, 0, 0, 0, 0},
+    {0, 0, 2, 0, 0, 2, 0, 0, 0, 0},
+    {0, 0, 0, 0, 2, 2, 2, 0, 0, 0},
+    {0, 0, 0, 0, 2, 2, 2, 0, 0, 0}
     };
 
-    //Loops "For" De Adição Usados Para Adição dos Navios
-    for(int j = 0; j < 3; j++)
+
+     //Adição dos navios e os poderes 
+
+     for(int i = 0; i < linha; i++)
+     {
+        for(int j = 0; j < coluna; j++)
+        {
+          if(Tabuleiro[i][j] == 1)
+          {
+            Tabuleiro[i][j] = 3;
+          }else if(Tabuleiro[i][j] == 2) 
+          {
+            Tabuleiro[i][j] = 5;
+          } 
+        }
+     }
+
+    // Imprime o Tabauleiro 
+   printf("Tabuleiro da Batalha Naval\n");
+    for(int i = 0; i < linha; i++) 
     {
-    Matriz[6][j] = 3;//Navio da Horizontal
-    Matriz[j][5] = 3;//Navio da Vertical
-    Matriz[j][j] = 3;//Navio da Diagonal Principal
-    }
-    for(int x = 0, t = 9; x < 3, t >= 7; x++ , t--)
-    {
-    Matriz[x][t] = 3;//Navio da Diagonal Secundaria 
+        for(int j = 0; j < coluna; j++)
+        {
+            printf(" %d ",Tabuleiro[i][j]);
+        }
+        printf("\n");
     }
 
-    // Impressão da matriz
-    for(int i = 0; i < linha; i++)
-    {
-    printf("[ %d, %d, %d, %d, %d, %d, %d, %d, %d, %d ]\n",
-    Matriz[i][0], Matriz[i][1], Matriz[i][2], Matriz[i][3], Matriz[i][4],
-    Matriz[i][5], Matriz[i][6], Matriz[i][7], Matriz[i][8], Matriz[i][9]);
-    }
-
-
-
-    return 0;//Programa Finalizou com sucesso.
+    return 0;
 }
